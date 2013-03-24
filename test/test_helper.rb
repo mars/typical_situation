@@ -9,7 +9,10 @@ Rails.backtrace_cleaner.remove_silencers!
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
-# Load fixtures from the engine
-if ActiveSupport::TestCase.method_defined?(:fixture_path=)
-  ActiveSupport::TestCase.fixture_path = File.expand_path("../fixtures", __FILE__)
+require "factory_girl_rails"
+FactoryGirl.definition_file_paths << "../factories"
+FactoryGirl.find_definitions
+
+class Test::Unit::TestCase
+  include FactoryGirl::Syntax::Methods
 end
