@@ -16,3 +16,5 @@ require "factory_girl_rails"
 class Test::Unit::TestCase
   include FactoryGirl::Syntax::Methods
 end
+
+load File.expand_path("../dummy/db/schema.rb",  __FILE__)
