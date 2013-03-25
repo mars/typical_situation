@@ -10,11 +10,9 @@ Rails.backtrace_cleaner.remove_silencers!
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 require "factory_girl_rails"
-# FactoryGirl.definition_file_paths << "../factories"
-# FactoryGirl.find_definitions
-
 class Test::Unit::TestCase
   include FactoryGirl::Syntax::Methods
 end
 
+# The sqlite in-memory database is being used, so load the schema on each run.
 load File.expand_path("../dummy/db/schema.rb",  __FILE__)
