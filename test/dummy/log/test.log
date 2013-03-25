@@ -1,0 +1,71 @@
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "grandmas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "mock_apple_pies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "grandma_id" integer, "ingredients" varchar(255)) [0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20130325180732')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20130325180543')
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "grandmas" ("name") VALUES (?)[0m  [["name", "Annie"]]
+  [1m[35mSQL (4.5ms)[0m  INSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)[0m  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)[0m  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "grandmas" ("name") VALUES (?)[0m  [["name", "Annie"]]
+  [1m[35mSQL (2.8ms)[0m  INSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)[0m  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)[0m  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "mock_apple_pies" ("grandma_id", "ingredients") VALUES (?, ?)  [["grandma_id", 1], ["ingredients", "flour, sugar, water, butter, eggs, milk, Ritz crackers, lemon, vanilla, cinnamon"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (2.4ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction

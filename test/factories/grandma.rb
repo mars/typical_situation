@@ -8,7 +8,7 @@ FactoryGirl.define do
     end
 
     after(:build) do |grandma, evaluator|
-      FactoryGirl.create_list(:mock_apple_pies, evaluator.pies_count, grandma: grandma)
+      FactoryGirl.create_list(:mock_apple_pie, evaluator.pies_count, grandma: grandma)
     end
 
   end
