@@ -6,9 +6,6 @@ module TypicalSituation
     # Return the collection as HTML or JSON
     #
     def respond_with_resources
-      if @range_start
-        headers['Content-Range'] = "resources #{@range_start}-#{@range_end||collection.size-1}/#{collection.size}"
-      end
       respond_to do |format|
         yield(format) if block_given?
         format.html do
@@ -16,7 +13,7 @@ module TypicalSituation
           render
         end
         format.json do
-          render :json => @resources.as_json(root: include_root?)
+          render :json => include_root? ? { plural_model_type => @resources.as_json } : @resources.as_json
         end
       end
     end

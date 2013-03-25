@@ -21,5 +21,9 @@ module TypicalSituation
     def include_root?
       true
     end
+
+    def plural_model_type
+      model_type.to_s.pluralize.intern
+    end
   end
 end
