@@ -9,4 +9,14 @@ module TypicalSituation
   include Actions
   include Operations
   include Responses
+
+  def self.included(base)
+    add_rescues(base)
+  end
+
+  def self.add_rescues(action_controller)
+    action_controller.class_eval do
+      rescue_from ActiveRecord::RecordNotFound, with: :respond_as_not_found
+    end
+  end
 end

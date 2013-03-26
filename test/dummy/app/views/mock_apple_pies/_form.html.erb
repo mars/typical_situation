@@ -1,0 +1,9 @@
+<%= form_for @mock_apple_pie do |f| %>
+  <%= f.label :ingredients %>:
+  <%= f.text_field :ingredients %><br />
+
+  <%= f.label 'Grandma' %>:
+  <%= select_tag 'mock_apple_pie[grandma_id]', options_from_collection_for_select(Grandma.all, "id", "name"), :include_blank => true %><br />
+
+  <%= f.submit %>
+<% end %>

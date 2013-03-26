@@ -77,10 +77,10 @@ module TypicalSituation
         yield(format) if block_given?
         format.html do
           set_single_instance
-          render
+          render action: (@resource.new_record? ? :new : :edit), :status => :unprocessable_entity
         end
         format.json do
-          render :json => @resource.as_json(root: include_root?), :status => :unprocessable_entity
+          render :json => @resource.as_json(root: include_root?, methods: [:errors]), :status => :unprocessable_entity
         end
       end
     end
@@ -93,7 +93,7 @@ module TypicalSituation
           gone_so_redirect or render
         end
         format.json do
-          render :nothing => true, :status => :no_content
+          render :text => '', :status => :no_content
         end
       end
     end
@@ -102,26 +102,32 @@ module TypicalSituation
       respond_to do |format|
         yield(format) if block_given?
         format.html do
-          render :file => "#{RAILS_ROOT}/public/404.html", :status => :not_found
+          render :file => not_found_template, :status => :not_found
         end
         format.json do
-          render :nothing => true, :status => :not_found
+          render :text => '', :status => :not_found
         end
       end
     end
     
     def respond_as_not_acceptable
-      render :nothing => true, :status => :not_acceptable
+      render :text => '', :status => :not_acceptable
     end
     
     # HTML response when @resource saved or updated.
     def changed_so_redirect
-      false
+      redirect_to @resource
+      true # return true when redirecting
     end
     
     # HTML response when @resource deleted.
     def gone_so_redirect
-      false
+      redirect_to action: :index
+      true # return true when redirecting
+    end
+
+    def not_found_template
+      "#{Rails.root}/public/404"
     end
   end
 end

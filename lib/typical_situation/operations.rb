@@ -9,7 +9,7 @@ module TypicalSituation
         set_single_instance
         @resource
       else
-        respond_as_not_found
+        raise ActiveRecord::RecordNotFound, "Could not find #{model_class}( id:#{params[:id].inspect} )"
       end
     end
     
