@@ -1,4 +1,3 @@
-require "typical_situation/engine"
 require "typical_situation/identity"
 require "typical_situation/actions"
 require "typical_situation/operations"
