@@ -41,7 +41,7 @@ Which provides the seven standard resourceful actions:
   1. **create**
   1. **edit**
   1. **update**
-  1. **delete*
+  1. **delete**
 
 For the content types:
 
