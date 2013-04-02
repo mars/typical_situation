@@ -28,13 +28,13 @@ module TypicalSituation
     end
   
     def update_resource(resource, attrs)
-      @resource.update_attributes(attrs)
+      resource.update_attributes(attrs)
     end
   
     def destroy_resource(resource)
-      @resource.destroy
+      resource.destroy
       collection.reload
-      @resource
+      resource
     end
   
     def create_resource(attrs)
