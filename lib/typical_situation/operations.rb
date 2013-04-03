@@ -27,8 +27,10 @@ module TypicalSituation
       @resource = collection.build
     end
   
+    # Avoid assignment of protected attributes.
     def update_resource(resource, attrs)
-      resource.update_attributes(attrs)
+      safe_attrs = attrs.slice(*model_class.accessible_attributes.to_a)
+      resource.update_attributes(safe_attrs)
     end
   
     def destroy_resource(resource)
