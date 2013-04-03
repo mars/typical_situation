@@ -116,7 +116,7 @@ module TypicalSituation
     
     # HTML response when @resource saved or updated.
     def changed_so_redirect
-      redirect_to @resource
+      redirect_to action: :show, id: @resource.to_param
       true # return true when redirecting
     end
     
