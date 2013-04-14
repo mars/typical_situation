@@ -27,10 +27,12 @@ module TypicalSituation
       @resource = collection.build
     end
   
-    # Avoid assignment of protected attributes.
     def update_resource(resource, attrs)
-      safe_attrs = attrs.slice(*model_class.accessible_attributes.to_a)
-      resource.update_attributes(safe_attrs)
+      resource.update_attributes(safe_attrs(attrs))
+    end
+  
+    def assign_resource(resource, attrs)
+      resource.assign_attributes(safe_attrs(attrs))
     end
   
     def destroy_resource(resource)
@@ -40,7 +42,17 @@ module TypicalSituation
     end
   
     def create_resource(attrs)
-      @resource = collection.create(attrs)
+      @resource = collection.create(safe_attrs(attrs))
+    end
+  
+    def build_resource(attrs)
+      @resource = collection.build(safe_attrs(attrs))
+    end
+
+    # Avoid assignment of protected attributes.
+    def safe_attrs(attrs)
+      raise(ArgumentError, "Missing #{model_class} attributes. Got #{attrs.inspect}") unless attrs
+      attrs.slice(*model_class.accessible_attributes.to_a)
     end
     
     def model_class
