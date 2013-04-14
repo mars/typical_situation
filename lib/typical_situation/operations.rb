@@ -50,9 +50,9 @@ module TypicalSituation
     end
 
     # Avoid assignment of protected attributes.
-    def safe_attrs(attrs)
+    def safe_attrs(attrs, role=:default)
       raise(ArgumentError, "Missing #{model_class} attributes. Got #{attrs.inspect}") unless attrs
-      attrs.slice(*model_class.accessible_attributes.to_a)
+      attrs.slice(*model_class.accessible_attributes(role).to_a)
     end
     
     def model_class
