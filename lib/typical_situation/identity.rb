@@ -25,5 +25,11 @@ module TypicalSituation
     def plural_model_type
       model_type.to_s.pluralize.intern
     end
+
+    def location_url
+      return if @resource.nil? || @resource.new_record?
+      @resource.respond_to?(:to_url) ? 
+        @resource.to_url : polymorphic_url(@resource)
+    end
   end
 end

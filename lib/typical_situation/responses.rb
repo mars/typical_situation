@@ -64,8 +64,7 @@ module TypicalSituation
           end
           format.json do
             render :json => @resource.as_json(root: include_root?), 
-              :location => @resource.respond_to?(:to_url) ? 
-                @resource.to_url : polymorphic_url(@resource), 
+              :location => location_url, 
               :status => :created
           end
         end
