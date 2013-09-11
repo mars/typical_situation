@@ -85,14 +85,18 @@ module TypicalSituation
     end
     
     def respond_as_gone
-      respond_to do |format|
-        yield(format) if block_given?
-        format.html do
-          set_single_instance
-          gone_so_redirect or render
-        end
-        format.json do
-          render :text => '', :status => :no_content
+      if has_errors?
+        respond_as_error
+      else
+        respond_to do |format|
+          yield(format) if block_given?
+          format.html do
+            set_single_instance
+            gone_so_redirect or render
+          end
+          format.json do
+            render :text => '', :status => :no_content
+          end
         end
       end
     end

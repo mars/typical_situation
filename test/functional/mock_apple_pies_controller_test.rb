@@ -209,4 +209,14 @@ class MockApplePiesControllerTest < ActionController::TestCase
     assert_empty @response.body
   end
 
+  test "DELETE destroy JSON (validation error)" do
+    pie = @grandma.mock_apple_pies.first
+    pie.update_attribute(:ingredients, 'sugar, real apples, flour, butter, and egg.')
+    delete :destroy, id: pie.to_param, format: 'json'
+    assert_response :unprocessable_entity
+    response_data = nil
+    assert_nothing_thrown { response_data = JSON.parse(@response.body) }
+    assert_equal ["can't be deleted because it contains real apple"], response_data['mock_apple_pie']['errors']['base']
+  end
+
 end
