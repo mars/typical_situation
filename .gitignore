@@ -1,5 +1,7 @@
 .DS_Store
 **/.DS_Store
+.byebug_history
+.rspec_status
 
 # https://github.com/github/gitignore/blob/master/Rails.gitignore
 *.rbc
@@ -10,13 +12,14 @@ capybara-*.html
 .rvmrc
 /.bundle
 /vendor/bundle
-/test/dummy/log/*
-/test/dummy/tmp/*
-/test/dummy/db/*.sqlite3
-/test/dummy/public/system/*
 /coverage/
 /spec/tmp/*
 **.orig
 rerun.txt
 pickle-email-*.html
 .project
+
+*gemfile.lock
+.byebug_history
+*.sqlite3
+*.log
