@@ -6,7 +6,7 @@ appraise 'rails-4.2' do
 end
 
 appraise 'rails-5.0' do
-  gem 'rails', '~> 5.0'
+  gem 'rails', '~> 5.2'
   gem 'rails-controller-testing'
 end
 

@@ -6,7 +6,11 @@ A Ruby mixin (module) providing the seven standard resource actions & responses 
 
 ## Installation
 
-Requires (tested in) **Rails 3.2** & **Ruby 1.9**.
+Tested in:
+
+- Rails 4.2
+- Rails 5.2
+- Rails 6.0
 
 Add to your **Gemfile**:
 
@@ -23,13 +27,13 @@ Add to your **Gemfile**:
       def model_type
         :mock_apple_pie
       end
-      
+
       # The collection of model instances.
       def collection
         current_user.mock_apple_pies
       end
-      
-      # Find a model instance by ID. 
+
+      # Find a model instance by ID.
       def find_in_collection(id)
         collection.find_by_id(id)
       end
@@ -40,12 +44,12 @@ Add to your **Gemfile**:
 The seven standard resourceful actions:
 
   1. **index**
-  1. **show**
-  1. **new**
-  1. **create**
-  1. **edit**
-  1. **update**
-  1. **delete**
+  2. **show**
+  3. **new**
+  4. **create**
+  5. **edit**
+  6. **update**
+  7. **delete**
 
 For the content types:
 
