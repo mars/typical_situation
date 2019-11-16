@@ -112,16 +112,12 @@ module TypicalSituation
         yield(format) if block_given?
 
         format.html do
-          render file: not_found_template, status: :not_found
+          raise ActionController::RoutingError, 'Not Found'
         end
         format.json do
           head :not_found
         end
       end
-    end
-
-    def respond_as_not_acceptable
-      head :not_acceptable
     end
 
     # HTML response when @resource saved or updated.
@@ -134,10 +130,6 @@ module TypicalSituation
     def gone_so_redirect
       redirect_to action: :index
       true # return true when redirecting
-    end
-
-    def not_found_template
-      Rails.root.join('public', '404')
     end
   end
 end

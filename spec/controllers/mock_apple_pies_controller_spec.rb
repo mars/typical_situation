@@ -56,8 +56,7 @@ RSpec.describe MockApplePiesController, type: :controller do
       end
 
       it 'renders not_found' do
-        get :show, params: { id: 555 }
-        expect(response).to have_http_status :not_found
+        expect { get :show, params: { id: 555 } }.to raise_error(ActionController::RoutingError)
       end
     end
 
@@ -141,8 +140,7 @@ RSpec.describe MockApplePiesController, type: :controller do
     end
 
     it 'renders not_found' do
-      get :edit, params: { id: 555 }
-      expect(response).to have_http_status :not_found
+      expect { get :edit, params: { id: 555 } }.to raise_error(ActionController::RoutingError)
     end
   end
 
@@ -158,8 +156,7 @@ RSpec.describe MockApplePiesController, type: :controller do
       end
 
       it 'renders not_found' do
-        put :update, params: update_attrs.merge(id: 555)
-        expect(response).to have_http_status :not_found
+        expect { put :update, params: update_attrs.merge(id: 555) }.to raise_error(ActionController::RoutingError)
       end
 
       it 'renders unprocessable_entity' do
@@ -200,8 +197,7 @@ RSpec.describe MockApplePiesController, type: :controller do
       end
 
       it 'renders not_found' do
-        delete :destroy, params: { id: 555 }
-        expect(response).to have_http_status :not_found
+        expect { delete :destroy, params: { id: 555 } }.to raise_error(ActionController::RoutingError)
       end
 
       it 'renders unprocessable_entity' do
