@@ -1,0 +1,6 @@
+<dl>
+<% @mock_apple_pies.each do |pie| %>
+  <dt>Pie by <%= pie.grandma.name %></dt>
+  <dd><%= pie.ingredients %></dd>
+<% end %>
+</dl>
