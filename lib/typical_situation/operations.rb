@@ -53,13 +53,29 @@ module TypicalSituation
       @model_class ||= model_type.to_s.camelize.constantize
     end
 
-    # Set the singular instance variable named after the model. Modules are delimited with "__".
+    def serialize_resource(resource, options = {})
+      serializable_resource(resource).to_json(options.merge(root: include_root?))
+    end
+
+    def serialize_resources(resources)
+      if include_root?
+        return { plural_model_type => serializable_resource(resources) }
+      end
+
+      serializable_resource(resources).to_json(root: false)
+    end
+
+    def serializable_resource(resource)
+      resource
+    end
+
+    # Set the singular instance variable named after the model. Modules are delimited with "_".
     # Example: a MockApplePie resource is set to ivar @mock_apple_pie.
     def set_single_instance
       instance_variable_set(:"@#{model_type.to_s.gsub('/', '__')}", @resource)
     end
 
-    # Set the plural instance variable named after the model. Modules are delimited with "__".
+    # Set the plural instance variable named after the model. Modules are delimited with "_".
     # Example: a MockApplePie resource collection is set to ivar @mock_apple_pies.
     def set_collection_instance
       instance_variable_set(:"@#{model_type.to_s.gsub('/', '__').pluralize}", @resources)

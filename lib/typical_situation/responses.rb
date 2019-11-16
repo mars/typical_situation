@@ -14,7 +14,7 @@ module TypicalSituation
           render
         end
         format.json do
-          render json: include_root? ? { plural_model_type => @resources.as_json } : @resources.as_json
+          render json: serialize_resources(@resources)
         end
       end
     end
@@ -32,7 +32,7 @@ module TypicalSituation
           render
         end
         format.json do
-          render json: @resource.as_json(root: include_root?)
+          render json: serialize_resource(@resource)
         end
       end
     end
@@ -49,7 +49,7 @@ module TypicalSituation
             changed_so_redirect || render
           end
           format.json do
-            render json: @resource.as_json(root: include_root?)
+            render json: serialize_resource(@resource)
           end
         end
       end
@@ -67,7 +67,7 @@ module TypicalSituation
             changed_so_redirect || render
           end
           format.json do
-            render json: @resource.as_json(root: include_root?),
+            render json: serialize_resource(@resource),
                    location: location_url,
                    status: :created
           end
@@ -81,10 +81,12 @@ module TypicalSituation
 
         format.html do
           set_single_instance
-          render action: (@resource.new_record? ? :new : :edit), status: :unprocessable_entity
+          render action: (@resource.new_record? ? :new : :edit),
+                 status: :unprocessable_entity
         end
         format.json do
-          render json: @resource.as_json(root: include_root?, methods: [:errors]), status: :unprocessable_entity
+          render json: serialize_resource(@resource, methods: [:errors]),
+                 status: :unprocessable_entity
         end
       end
     end
