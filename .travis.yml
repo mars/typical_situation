@@ -22,4 +22,4 @@ jobs:
   - rvm: 2.4
     gemfile: gemfiles/rails_6.0.gemfile
   - rvm: 2.6
-    gemfile: gemfiles/rails_4.0.gemfile
+    gemfile: gemfiles/rails_4.2.gemfile
