@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TypicalSituation
-  VERSION = "0.9.7"
+  VERSION = '0.11.1'
 end
